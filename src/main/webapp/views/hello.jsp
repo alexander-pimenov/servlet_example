@@ -16,7 +16,9 @@
                 <div class="w3-container w3-center w3-green">
                     <h2>((((( My dear, user )))))</h2>
                 </div>
-                <h1> Hello from ${name} </h1>
+                <div class="w3-container w3-center w3-blue">
+                    <h2><i>Hello from ${name}</i></h2>
+                </div>
             </div>
         </div>
 
