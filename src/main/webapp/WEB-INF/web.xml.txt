@@ -1,0 +1,62 @@
+Этот web.xml превратил в текстовый документ, т.к. использую аннотации над
+сервлетами @WebServlet("/...")
+Чтобы не было ошибок, что нет этого файла, прописал в pom.xml
+<plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.2.2</version>
+    <configuration>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </configuration>
+</plugin>
+
+
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         metadata-complete="false">
+    <display-name>Archetype Created Web Application</display-name>
+    <!-- add servlet -->
+    <!-- Как видно, servlet-name в обоих случаях одинаковое. Благодаря этому
+    Tomcat знает, что если пришел запрос на адрес /add, его нужно передать в
+     сервлет app.servlets.AddServlet. -->
+    <!-- здесь описываем сервлет, т.е. прописываем путь к Java-классу -->
+    <servlet>
+        <servlet-name>add</servlet-name>
+        <servlet-class>app.servlets.AddServlet</servlet-class>
+    </servlet>
+    <!-- здесь прописан путь к куску адресной строки, вызывающей сервлет,-->
+    <!-- т.е. привязываем сервлет к адресу-->
+    <servlet-mapping>
+        <servlet-name>add</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <!-- list servlet -->
+    <!-- здесь описываем сервлет, т.е. прописываем путь к Java-классу -->
+    <servlet>
+        <servlet-name>list</servlet-name>
+        <servlet-class>app.servlets.ListServlet</servlet-class>
+    </servlet>
+    <!-- здесь прописан путь к куску адресной строки, вызывающей сервлет,-->
+    <!-- т.е. привязываем сервлет к адресу-->
+    <servlet-mapping>
+        <servlet-name>list</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+    <!-- hello servlet -->
+    <!-- здесь описываем сервлет, т.е. прописываем путь к Java-классу -->
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>app.servlets.HelloServlet</servlet-class>
+    </servlet>
+    <!-- здесь прописан путь к куску адресной строки, вызывающей сервлет,-->
+    <!-- т.е. привязываем сервлет к адресу-->
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
